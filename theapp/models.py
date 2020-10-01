@@ -174,7 +174,8 @@ class Notice(models.Model):
     nt_pk = models.IntegerField(primary_key=True)
     nt_title = models.CharField(max_length=45)
     nt_writer = models.CharField(max_length=45)
-    nt_count = models.IntegerField(blank=True, null=True)
+    # nt_count = models.IntegerField(blank=True, null=True)
+    nt_count = models.PositiveIntegerField(default = 0)
     nt_updateday = models.DateField()
     nt_content = models.TextField(blank=True, null=True)
 
@@ -185,6 +186,10 @@ class Notice(models.Model):
         managed = False
         db_table = 'notice'
 
+    @property
+    def update_counter(self):
+        self.nt_count = self.nt_count + 1
+        self.save()
 
      
 class SchoolVote(models.Model):
@@ -215,7 +220,8 @@ class SuggestOther(models.Model):
     sgother_pk = models.IntegerField(primary_key=True)
     sgother_title = models.CharField(max_length=45)
     sgother_writer = models.CharField(max_length=45)
-    sgother_count = models.IntegerField(blank=True, null=True)
+#    sgother_count = models.IntegerField(blank=True, null=True)
+    sgother_count = models.PositiveIntegerField(default = 0)
     sgother_updateday = models.DateField()
     sgother_content = models.TextField(blank=True, null=True)
 
@@ -226,12 +232,18 @@ class SuggestOther(models.Model):
         managed = False
         db_table = 'suggest_other'
 
+    @property
+    def update_counter(self):
+        self.sgother_count = self.sgother_count + 1
+        self.save()
+
 
 class SuggestVote(models.Model):
     sgvote_pk = models.IntegerField(primary_key=True)
     sgvote_title = models.CharField(max_length=45)
     sgvote_writer = models.CharField(max_length=45)
-    sgvote_count = models.IntegerField(blank=True, null=True)
+#    sgvote_count = models.IntegerField(blank=True, null=True)
+    sgvote_count = models.PositiveIntegerField(default = 0)
     sgvote_updateday = models.DateField()
     sgvote_content = models.TextField(blank=True, null=True)
 
@@ -241,6 +253,11 @@ class SuggestVote(models.Model):
     class Meta:
         managed = False
         db_table = 'suggest_vote'
+
+    @property
+    def update_counter(self):
+        self.sgvote_count = self.sgvote_count + 1
+        self.save()
 
 
 class UndergraduateVote(models.Model):
