@@ -6,8 +6,21 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
+from datetime import datetime
+
 
 # Create your models here.
+# Profile 추가 (회원가입시 추가 기입 사항)
+from django.contrib.auth.models import User
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    college = models.CharField(max_length=50, blank=True)
+    major = models.CharField(max_length=50, blank=True)
+    student_id = models.TextField(max_length=50, blank=True)
+
+
+
 
 class AuthGroup(models.Model):
     name = models.CharField(unique=True, max_length=150)
@@ -135,6 +148,7 @@ class MajorVote(models.Model):
     mj_vt_pk = models.IntegerField(primary_key=True)
     mj_vt_name = models.CharField(max_length=45)
     mj_vt_dday = models.DateField()
+    date = datetime.today()
     mj_category1 = models.CharField(max_length=45, blank=True, null=True)
     mj_category2 = models.CharField(max_length=45, blank=True, null=True)
     mj_category3 = models.CharField(max_length=45, blank=True, null=True)
@@ -198,6 +212,7 @@ class SchoolVote(models.Model):
     sh_vt_pk = models.IntegerField(primary_key=True)
     sh_vt_name = models.CharField(max_length=45)
     sh_vt_dday = models.DateField()
+    date = datetime.today()
     sh_category1 = models.CharField(max_length=45, blank=True, null=True)
     sh_category2 = models.CharField(max_length=45, blank=True, null=True)
     sh_category3 = models.CharField(max_length=45, blank=True, null=True)
@@ -211,6 +226,7 @@ class SchoolVote(models.Model):
     sh_promise2 = models.CharField(max_length=45, blank=True, null=True)
     sh_promise3 = models.CharField(max_length=45, blank=True, null=True)
     sh_promise4 = models.CharField(max_length=45, blank=True, null=True)
+    
 
     def __str__(self):
         return self.sh_vt_name
@@ -268,6 +284,7 @@ class UndergraduateVote(models.Model):
     ud_vt_pk = models.IntegerField(primary_key=True)
     ud_vt_name = models.CharField(max_length=45)
     ud_vt_dday = models.DateField()
+    date = datetime.today()
     ud_category1 = models.CharField(max_length=45, blank=True, null=True)
     ud_category2 = models.CharField(max_length=45, blank=True, null=True)
     ud_category3 = models.CharField(max_length=45, blank=True, null=True)
