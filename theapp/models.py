@@ -139,13 +139,15 @@ class MajorVote(models.Model):
     mj_category2 = models.CharField(max_length=45, blank=True, null=True)
     mj_category3 = models.CharField(max_length=45, blank=True, null=True)
     mj_category4 = models.CharField(max_length=45, blank=True, null=True)
-    mj_category5 = models.CharField(max_length=45, blank=True, null=True)
     mj_vt_result1 = models.CharField(max_length=45, blank=True, null=True)
     mj_vt_result2 = models.CharField(max_length=45, blank=True, null=True)
     mj_vt_result3 = models.CharField(max_length=45, blank=True, null=True)
     mj_vt_result4 = models.CharField(max_length=45, blank=True, null=True)
-    mj_vt_result5 = models.CharField(max_length=45, blank=True, null=True)
     mj_final_result = models.CharField(max_length=45, blank=True, null=True)
+    mj_promise1 = models.CharField(max_length=45, blank=True, null=True)
+    mj_promise2 = models.CharField(max_length=45, blank=True, null=True)
+    mj_promise3 = models.CharField(max_length=45, blank=True, null=True)
+    mj_promise4 = models.CharField(max_length=45, blank=True, null=True)
 
     def __str__(self):
         return self.mj_vt_name
@@ -174,8 +176,8 @@ class Notice(models.Model):
     nt_pk = models.IntegerField(primary_key=True)
     nt_title = models.CharField(max_length=45)
     nt_writer = models.CharField(max_length=45)
-    # nt_count = models.IntegerField(blank=True, null=True)
-    nt_count = models.PositiveIntegerField(default = 0)
+    nt_count = models.IntegerField(blank=True, null=True)
+#    nt_count = models.PositiveIntegerField(default = 0) # 음수 금지, default 값 0으로 설정, null 값 금지 필요
     nt_updateday = models.DateField()
     nt_content = models.TextField(blank=True, null=True)
 
@@ -200,13 +202,15 @@ class SchoolVote(models.Model):
     sh_category2 = models.CharField(max_length=45, blank=True, null=True)
     sh_category3 = models.CharField(max_length=45, blank=True, null=True)
     sh_category4 = models.CharField(max_length=45, blank=True, null=True)
-    sh_category5 = models.CharField(max_length=45, blank=True, null=True)
     sh_vt_result1 = models.CharField(max_length=45, blank=True, null=True)
     sh_vt_result2 = models.CharField(max_length=45, blank=True, null=True)
     sh_vt_result3 = models.CharField(max_length=45, blank=True, null=True)
     sh_vt_result4 = models.CharField(max_length=45, blank=True, null=True)
-    sh_vt_result5 = models.CharField(max_length=45, blank=True, null=True)
     sh_final_result = models.CharField(max_length=45, blank=True, null=True)
+    sh_promise1 = models.CharField(max_length=45, blank=True, null=True)
+    sh_promise2 = models.CharField(max_length=45, blank=True, null=True)
+    sh_promise3 = models.CharField(max_length=45, blank=True, null=True)
+    sh_promise4 = models.CharField(max_length=45, blank=True, null=True)
 
     def __str__(self):
         return self.sh_vt_name
@@ -220,9 +224,9 @@ class SuggestOther(models.Model):
     sgother_pk = models.IntegerField(primary_key=True)
     sgother_title = models.CharField(max_length=45)
     sgother_writer = models.CharField(max_length=45)
-#    sgother_count = models.IntegerField(blank=True, null=True)
-    sgother_count = models.PositiveIntegerField(default = 0)
-    sgother_updateday = models.DateField()
+    sgother_count = models.IntegerField(blank=True, null=True)
+#    sgother_count = models.PositiveIntegerField(default = 0)
+    sgother_updateday = models.DateField(auto_now_add=True)
     sgother_content = models.TextField(blank=True, null=True)
 
     def __str__(self):
@@ -242,9 +246,9 @@ class SuggestVote(models.Model):
     sgvote_pk = models.IntegerField(primary_key=True)
     sgvote_title = models.CharField(max_length=45)
     sgvote_writer = models.CharField(max_length=45)
-#    sgvote_count = models.IntegerField(blank=True, null=True)
-    sgvote_count = models.PositiveIntegerField(default = 0)
-    sgvote_updateday = models.DateField()
+    sgvote_count = models.IntegerField(blank=True, null=True)
+#    sgvote_count = models.PositiveIntegerField(default = 0)
+    sgvote_updateday = models.DateField(auto_now_add=True)
     sgvote_content = models.TextField(blank=True, null=True)
 
     def __str__(self):
@@ -268,13 +272,15 @@ class UndergraduateVote(models.Model):
     ud_category2 = models.CharField(max_length=45, blank=True, null=True)
     ud_category3 = models.CharField(max_length=45, blank=True, null=True)
     ud_category4 = models.CharField(max_length=45, blank=True, null=True)
-    ud_category5 = models.CharField(max_length=45, blank=True, null=True)
     ud_vt_result1 = models.CharField(max_length=45, blank=True, null=True)
     ud_vt_result2 = models.CharField(max_length=45, blank=True, null=True)
     ud_vt_result3 = models.CharField(max_length=45, blank=True, null=True)
     ud_vt_result4 = models.CharField(max_length=45, blank=True, null=True)
-    ud_vt_result5 = models.CharField(max_length=45, blank=True, null=True)
     ud_final_result = models.CharField(max_length=45, blank=True, null=True)
+    ud_promise1 = models.CharField(max_length=45, blank=True, null=True)
+    ud_promise2 = models.CharField(max_length=45, blank=True, null=True)
+    ud_promise3 = models.CharField(max_length=45, blank=True, null=True)
+    ud_promise4 = models.CharField(max_length=45, blank=True, null=True)
 
     def __str__(self):
         return self.ud_vt_name
@@ -292,3 +298,11 @@ class VoteList(models.Model):
     class Meta:
         managed = False
         db_table = 'vote_list'
+
+# class Post(models.Model):
+#     title = models.CharField(max_length=45)
+#     author =  models.CharField(max_length=45)
+#     body = models.TextField()
+#     date = models.DateTimeField(auto_now_add=True)
+
+
