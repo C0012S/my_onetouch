@@ -204,7 +204,7 @@ class Notice(models.Model):
 
     @property
     def update_counter(self):
-        self.nt_count = self.nt_count + 1
+#        self.nt_count = self.nt_count + 1
         self.save()
 
      
@@ -254,7 +254,7 @@ class SuggestOther(models.Model):
 
     @property
     def update_counter(self):
-        self.sgother_count = self.sgother_count + 1
+#        self.sgother_count = self.sgother_count + 1
         self.save()
 
 
@@ -276,7 +276,7 @@ class SuggestVote(models.Model):
 
     @property
     def update_counter(self):
-        self.sgvote_count = self.sgvote_count + 1
+#        self.sgvote_count = self.sgvote_count + 1
         self.save()
 
 
